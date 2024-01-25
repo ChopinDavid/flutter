@@ -94,9 +94,8 @@ abstract mixin class WidgetsBindingObserver {
   // removed.
   Future<bool> didPushRouteInformation(RouteInformation routeInformation) {
     final Uri uri = routeInformation.uri;
-    return didPushRoute(
-      uri.toString()
-    );
+    print('DAVID!!! ${uri.toString()}');
+    return didPushRoute(uri.toString());
   }
 
   /// Called when the application's dimensions change. For example,
@@ -689,7 +688,9 @@ mixin WidgetsBinding on BindingBase, ServicesBinding, SchedulerBinding, GestureB
     }
   }
 
-  Future<void> _handlePushRouteInformation(Map<dynamic, dynamic> routeArguments) async {
+  Future<void> _handlePushRouteInformation(
+      Map<dynamic, dynamic> routeArguments) async {
+    // await Future.delayed(Duration(seconds: 5));
     final RouteInformation routeInformation = RouteInformation(
       uri: Uri.parse(routeArguments['location'] as String),
       state: routeArguments['state'] as Object?,
