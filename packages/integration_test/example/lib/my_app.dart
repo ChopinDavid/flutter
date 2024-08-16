@@ -17,6 +17,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool isTrue = true;
+  @override
+  void initState() {
+    super.initState();
+    isTrue = false;
+    Future.delayed(Duration(seconds: 5)).then(
+      (value) {
+        assert(isTrue, 'This should fail after the test has already passed.');
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
